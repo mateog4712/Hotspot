@@ -1,0 +1,49 @@
+package "Hotspot"
+version "1.0"
+args "--unamed-opts=input"
+
+purpose "Possibly pseudoknotted partition function of RNAs"
+
+usage "Hotspot [options] [sequence]"
+
+description "Read RNA sequence from stdin or cmdline; predict minimum\nfree energy, optimum structure, and ensemble energy using the possibly\npseuodknotted partiton function RNA folding algorithm"
+
+# Options
+
+option "input-file" i
+    "Give a path to an input file containing the sequence (and input structure if known)"
+    string optional
+
+option "output-file" o
+    "Give a path to an output file which will the sequence, and its structure and energy"
+    string optional
+
+option "subopt" n
+    "Specify the number of hotspots to output (default is 100)"
+    int default="100" optional
+
+option "turn" t
+    "Specify the minimum turn size/ size of hairpin (default is 3)"
+    int default="3" optional
+
+option "stem" s
+    "Specify the minimum number of base pairs in a stem (default is 4)"
+    int default="4" optional
+
+option "dangles" d
+    "Specify the dangle model to be used (base is 2)"
+    int default="2" optional
+
+option "paramFile" P
+    "Read energy parameters from paramfile, instead of using the default parameter set."
+    string optional
+
+option "shape" S
+    "Give a path to a shape file corresponding to the sequence given"
+    string optional
+
+option "noConv" -
+    "Do not convert DNA into RNA. This will use the Matthews 2004 parameters for DNA"
+    flag off
+
+text "\nThe input sequence is read from standard input, unless it is\ngiven on the command line.\n"
