@@ -147,8 +147,19 @@ void s_energy_matrix::get_hotspots(std::vector<Hotspot> &hotspot_list, int max_h
     while ((int)hotspot_list.size() > max_hotspot) {
         hotspot_list.pop_back();
     }
+    std::sort(hotspot_list.begin(), hotspot_list.end(), compare_hotspot_ptr_pos);
 
     return;
 }
 
 bool compare_hotspot_ptr(Hotspot &a, Hotspot &b) { return (a.get_energy() < b.get_energy()); }
+
+bool compare_hotspot_ptr_pos(Hotspot &a, Hotspot &b) { 
+    if (a.get_left_outer_index() != b.get_left_outer_index())
+        return (a.get_left_outer_index() < b.get_left_outer_index());
+    if (a.get_left_inner_index() != b.get_left_inner_index())
+        return (a.get_left_inner_index() < b.get_left_inner_index());
+    if (a.get_right_inner_index() != b.get_right_inner_index())
+        return (a.get_right_inner_index() < b.get_right_inner_index());
+    return (a.get_right_outer_index() < b.get_right_outer_index());
+}

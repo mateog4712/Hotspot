@@ -14,6 +14,7 @@ extern "C" {
 #include "ViennaRNA/params/io.h"
 }
 bool compare_hotspot_ptr(Hotspot &a, Hotspot &b);
+bool compare_hotspot_ptr_pos(Hotspot &a, Hotspot &b);
 
 class s_energy_matrix {
   public:
